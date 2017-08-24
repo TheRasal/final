@@ -1,0 +1,210 @@
+:link {
+    color: #ff9e2d
+}
+
+:visited {
+    color: rgba(255, 146, 52, 0)
+}
+
+:hover {
+    color: rgba(177, 27, 33, 0.64)
+}
+
+body {
+    background-size: auto;
+}
+
+.bodyindex {
+    background: url(/resources/images/znak_plyus_goluboy_fon_1920x1200.jpg);
+    background-attachment: fixed;
+}
+
+.bodyException {
+    background: url(/resources/images/222.jpg);
+    background-attachment: fixed;
+}
+
+.bodyregister {
+    background: url(/resources/images/motto.net.ua-15545.jpg);
+    background-attachment: fixed;
+}
+
+.bodyPostLogin {
+    background: url(/resources/images/fonstola.ru-53586.jpg);
+    background-attachment: fixed;
+}
+
+.bodyProfile {
+    background: url(/resources/images/profile.jpg);
+    background-attachment: fixed;
+}
+
+div {
+    color: white;
+}
+
+font {
+    color: white;
+}
+
+td {
+    color: white
+}
+
+h3 {
+    color: #3f729b;
+}
+
+h1 {
+    color: white;
+}
+
+.index-fontA {
+    color: white;
+    font-family: sans-serif;
+}
+
+#field {
+    width: 240px;
+    height: 35px;
+    border-radius: 4px;
+}
+
+.index-fontB {
+    color: #ff9e2d;
+    font-family: sans-serif;
+}
+
+.index-div {
+    margin-left: 33%;
+    margin-top: 6%;
+    border-radius: 12px;
+    border: 10px salmon;
+    width: 17%;
+    padding: 20px;
+    background-color: #3f729b;
+    color: white;
+}
+
+.buttonAuth {
+    background-color: #ff9e2d;
+    color: #3f729b;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 6px;
+}
+
+.buttonSignup {
+    background-color: rgba(43, 46, 49, 0.38);
+    color: rgba(255, 255, 255, 0.87);
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 6px;
+}
+
+.buttonComplete {
+    background-color: #ff9e2d;
+    color: #3f729b;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 6px;
+}
+
+.buttonMainPage {
+    background-color: rgba(21, 111, 92, 0.61);
+    color: rgba(255, 255, 255, 0.87);
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.buttonPost {
+    background-color: rgba(17, 121, 97, 0.72);
+    color: rgba(255, 255, 255, 0.87);
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+
+.buttonLogin {
+    background-color: #3f729b;
+    color: #EA8E27;
+    padding: 0.3rem;
+    font-family: sans-serif;
+    font-size: 14pt;
+    border-radius: 6px;
+}
+
+.registr-div {
+    margin: auto;
+    border-radius: 5px;
+    color: #ffffffe6;
+    font-family: sans-serif;
+    align-self: center;
+    font-size: 15pt;
+    background-color: rgba(169, 186, 187, 0.07);
+    border: 10px solid rgba(255, 255, 255, 0);
+    width: 25%;
+    padding: 10px;
+}
+
+.postlogin-div {
+    border-radius: 6px;
+    font-family: sans-serif;
+    background-color: rgba(21, 56, 43, 0.38);
+    margin: 10px auto;
+    width: 43%;
+    padding: 10px;
+}
+
+.postEdition-div {
+    font-family: sans-serif;
+    color: white;
+    border-radius: 6px;
+    background-color: rgba(21, 56, 43, 0.38);
+    margin: 10px auto;
+    border: 10px solid rgba(255, 255, 255, 0);
+    width: 50%;
+    padding: 10px;
+}
+
+.profile-div {
+    border-radius: 6px;
+    font-family: sans-serif;
+    color: white;
+    border: 2px solid rgba(26, 2, 2, 0.09);
+    margin-top: 10px;
+    margin-left: 71%;
+    width: 21%;
+    padding: 10px;
+    background-color: rgba(172, 171, 173, 0.17);
+}
+
+.profile-edit-div {
+    border-radius: 6px;
+    font-family: sans-serif;
+    color: white;
+    border: 2px solid rgba(26, 2, 2, 0.09);
+    margin-top: 10px;
+    margin-left: 71%;
+    width: 21%;
+    padding: 10px;
+    background-color: rgba(172, 171, 173, 0.17);
+}
+
+.error-div {
+    margin-top: 6%;
+    margin-left: 35%;
+    font-family: sans-serif;
+    color: white;
+    width: 30%;
+    padding: 30px;
+}
