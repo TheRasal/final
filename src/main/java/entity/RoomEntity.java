@@ -86,11 +86,11 @@ public class RoomEntity implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "RoomEntity{" +
-                "room_id=" + room_id +
-                ", room_name='" + room_name + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "RoomEntity{" +
+//                "room_id=" + room_id +
+//                ", room_name='" + room_name + '\'' +
+//                '}';
+//    }
 }

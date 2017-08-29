@@ -129,6 +129,12 @@ public class PostController {
     }
 
 
+    @RequestMapping(value = "/changeRoom", method = RequestMethod.GET)
+    public String changeRoom (HttpSession session){
+        session.removeAttribute("enterRoom");
+        return "redirect:/postloginpage";
+    }
+
     @RequestMapping(value = "/mymessages", method = RequestMethod.GET)
     public String showOnlyMyPosts(HttpSession session) {
         session.setAttribute("ownpage", 1);

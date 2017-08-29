@@ -90,15 +90,15 @@ public class MessagesEntity implements Serializable {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "MessagesEntity{" +
-                "messageID=" + messageID +
-                ", text='" + text + '\'' +
-                ", postDate=" + postDate +
-                ", userID=" + userID +
-                ", image=" + Arrays.toString(image) +
-                ", roomID=" + roomID +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "MessagesEntity{" +
+//                "messageID=" + messageID +
+//                ", text='" + text + '\'' +
+//                ", postDate=" + postDate +
+//                ", userID=" + userID +
+//                ", image=" + Arrays.toString(image) +
+//                ", roomID=" + roomID +
+//                '}';
+//    }
 }

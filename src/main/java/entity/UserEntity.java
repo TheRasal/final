@@ -138,16 +138,14 @@ public class UserEntity implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "user_id=" + user_id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sentMessages=" + sentMessages +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "UserEntity{" +
+//                "user_id=" + user_id +
+//                ", login='" + login + '\'' +
+//                ", password='" + password + '\'' +
+//                ", email='" + email + '\'' +
+//                ", name='" + name + '\'' +
+//                ", age=" + age +'}';
+//    }
 }
