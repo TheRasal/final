@@ -16,6 +16,11 @@
     ${pageContext.forward("/postloginpage")}
 </c:if>
 
+<span style="float: left">
+    <a href="?lang=en"><font color="black">en</font></a>
+    <a href="?lang=ru"><font color="black">ru</font></a>
+    </span>
+
 <h3 align="center">
     <c:if test="${formNotification!=''}">
         <b>${formNotification} </b>

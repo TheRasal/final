@@ -36,17 +36,8 @@ public class UserEntity implements Serializable {
     @Column(name = "age")
     private int age;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "users_rooms",
-//            joinColumns = { @JoinColumn(name = "user_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "room_id") })
-//    private Set<RoomEntity> roomEntitySet = new HashSet<RoomEntity>();
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "userID")
     private List<MessagesEntity> sentMessages;
-
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "usersID")
-
 
 
     public List<MessagesEntity> getSentMessages() {
@@ -138,14 +129,5 @@ public class UserEntity implements Serializable {
         return true;
     }
 
-//    @Override
-//    public String toString() {
-//        return "UserEntity{" +
-//                "user_id=" + user_id +
-//                ", login='" + login + '\'' +
-//                ", password='" + password + '\'' +
-//                ", email='" + email + '\'' +
-//                ", name='" + name + '\'' +
-//                ", age=" + age +'}';
-//    }
+
 }

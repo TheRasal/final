@@ -17,7 +17,7 @@ import java.util.Locale;
 
 @Repository("roomDAO")
 @Transactional
-public class RoomDAOImpl implements IRoomDAO {
+public class RoomDAOImpl implements RoomDAO {
     @Autowired
     private MessageSource messageSource;
 
@@ -34,9 +34,7 @@ public class RoomDAOImpl implements IRoomDAO {
         query.setParameter("room_id",room_id);
         LOGGER.info(messageSource.getMessage("dao.room.getById",new Object[]{room_id},Locale.ENGLISH));
         return (RoomEntity)query.uniqueResult() ;
-//        RoomEntity roomEntity = sessionFactory.getCurrentSession().get(RoomEntity.class,room_id);
-//        LOGGER.info(messageSource.getMessage("dao.room.getById",new Object[]{room_id},Locale.ENGLISH));
-//        return roomEntity;
+//
     }
 
 
@@ -46,9 +44,7 @@ public class RoomDAOImpl implements IRoomDAO {
         query.setParameter("room_name",room_name);
         LOGGER.info(messageSource.getMessage("dao.room.getByName",new Object[]{room_name},Locale.ENGLISH));
         return (RoomEntity)query.uniqueResult() ;
-//        RoomEntity roomEntity = sessionFactory.getCurrentSession().get(RoomEntity.class,room_name);
-//        LOGGER.info(messageSource.getMessage("dao.room.getByName",new Object[]{room_name},Locale.ENGLISH));
-//        return roomEntity;
+//
     }
 
     public List<RoomEntity> getAllRooms() {

@@ -1,7 +1,7 @@
 package service.user;
 
 
-import dao.user.IUserDAO;
+import dao.user.UserDAO;
 import dto.UserDTO;
 import entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service("iUserService")
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    IUserDAO iuserDao;
+    UserDAO iuserDao;
 
 
     @Transactional

@@ -1,11 +1,9 @@
 package service.message;
 
 
-import dao.message.IMessageDAO;
-import dao.room.IRoomDAO;
+import dao.message.MessageDAO;
 import dto.MessagesDTO;
 import entity.MessagesEntity;
-import entity.RoomEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +16,10 @@ import java.util.List;
  */
 
 @Service("messageServise")
-public class MessageServiceImpl implements IMessageService {
+public class MessageServiceImpl implements MessageService {
 
     @Autowired
-    IMessageDAO imessageDAO;
+    MessageDAO imessageDAO;
 
 
 

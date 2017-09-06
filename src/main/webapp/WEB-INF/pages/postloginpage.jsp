@@ -64,7 +64,7 @@
     <br>
     <form:form action="/postloginpage" method="post" commandName="enterRoom">
         <form:select path="room_name">
-            <c:forEach var="rooms" items="${room}">
+            <c:forEach var="rooms" items="${rooms}">
                 <form:option value='${rooms.room_name}'>
                 </form:option>
             </c:forEach>

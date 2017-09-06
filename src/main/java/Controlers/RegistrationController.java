@@ -1,103 +1,68 @@
-package Controlers;
+package controlers;
 
+import com.sun.istack.internal.NotNull;
 import dto.UserDTO;
 import entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import service.user.IUserService;
+import service.user.UserService;
 import utils.UtilClass;
 import validators.RegValidator;
 
+import java.util.Locale;
+
+
 @Controller
-public class RegistrationController {
+public class RegistrationController extends ExceptionsController {
 
-    @Controller
-    public class RegController extends ExceptionsController {
+    @Autowired
+    private RegValidator regValidator;
 
-        @Autowired
-        private RegValidator regValidator;
+    @Autowired
+    private UserService userService;
 
-        @Autowired
-        private IUserService userService;
+    @Autowired
+    private MessageSource messageSource;
 
-        /**
-         * Registration of user and adding user+profile to DB
-         *
-         * @param model
-         * @param userEntity
-         * @param result
-         * @return
-         */
-        @RequestMapping(value = "/registrationpage", method = {RequestMethod.POST})
-        public String Registration(Model model,
-                                   @ModelAttribute("userEntity") UserEntity userEntity, BindingResult result) {
 
-            regValidator.validate(userEntity, result);
+    @RequestMapping(value = "/registrationpage", method = {RequestMethod.POST})
+    public String Registration(Model model, Locale locale,
+                               @ModelAttribute("userEntity") UserEntity userEntity, BindingResult result) {
 
-            if (result.hasErrors()) {
-                return "registrationpage";
-            } else {
 
-                if (userService.isLoginExists(userEntity.getLogin())) {
-                    model.addAttribute("formNotification",
-                            String.format("User with login <b>%s </b>" +
-                                            "was already registered",
-                                    userEntity.getLogin()));
-                    return "registrationpage";
-
-                } else {
-
-                    if (userService.isEmailExists(userEntity.getEmail())) {
-
-                        model.addAttribute("formNotification",
-                                String.format("User with email <b>%s </b>" +
-                                        "was already registered", userEntity.getEmail()));
-                        return "registrationpage";
-
-                    } else {
-                        try {
-                            model.addAttribute("formNotification",
-                                    String.format("User with login <b>%s </font></b>" +
-                                            "has been created", userEntity.getLogin()));
-                            model.addAttribute("userDTO", new UserDTO());
-
-                            //Password encofing
-                            userEntity.setPassword(UtilClass.passEncoding(userEntity.getPassword()));
-
-                            //Profile creation for our new user
-//                            Profile profile = new Profile();
-//                            profile.setFirstName(userEntity.getFirstName());
-//                            profile.setLastName(userEntity.getLastName());
-//                            profile.setEmail(userEntity.getEmail());
-//                            userEntity.setProfile(profile);
-//                            profile.setUser(userEntity);
-                            userService.createUser(userEntity);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        return "index";
-                    }
-                }
+        regValidator.validate(userEntity, result);
+        if (result.hasErrors() || userService.isLoginExists(userEntity.getLogin()) || userService.isEmailExists(userEntity.getEmail())) {
+            if (userService.isLoginExists(userEntity.getLogin())) {
+                model.addAttribute("formNotification", messageSource.getMessage("205", new Object[]{}, locale));
+            } else if (userService.isEmailExists(userEntity.getEmail())) {
+                model.addAttribute("formNotification", messageSource.getMessage("206", new Object[]{}, locale));
             }
-        }
-
-        /**
-         * Adding a model object to registrationpage.jsp
-         *
-         * @param model
-         * @return
-         */
-        @RequestMapping(value = "/registrationpage", method = RequestMethod.GET)
-        public String displayUser(Model model) {
-            model.addAttribute("userEntity", new UserEntity());
             return "registrationpage";
+        } else {
+            try {
+                model.addAttribute("formNotification", messageSource.getMessage("305", new Object[]{}, locale));
+                model.addAttribute("userDTO", new UserDTO());
+                userEntity.setPassword(UtilClass.passEncoding(userEntity.getPassword()));
+                userService.createUser(userEntity);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "index";
         }
-
     }
+
+    @RequestMapping(value = "/registrationpage", method = RequestMethod.GET)
+    public String displayUser(Model model) {
+        model.addAttribute("userEntity", new UserEntity());
+        return "registrationpage";
+    }
+
 }
+

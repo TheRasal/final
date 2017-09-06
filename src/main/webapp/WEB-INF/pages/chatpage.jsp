@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -20,14 +19,12 @@
     <a href="?lang=ru"><font color="white">ru</font></a>
     </span>
 
-<%-- Exit from sessiom --%>
+
 <spring:message code="exit.button" var="exitbuttonLabel"/>
 <spring:message code="logged.as" var="loggedasLabel"/>
-<%--<spring:message code="profile.form" var="pfLabel"/>--%>
 <spring:message code="own.posts" var="mypostslabel"/>
 <spring:message code="all.posts" var="allstslabel"/>
 <spring:message code="room.button" var="changeroom"/>
-
 
 
 <div align="right" class="postlogin-div">
@@ -43,17 +40,7 @@
     </ext:exitTag>
 </div>
 
-<h1 align="center"> I N S T W I T T </h1>
-
-<br>
-<center>
-    <%--<c:param name="roomName" value="${sessionScope.enterRoom.room_name}"/>--%>
-        <p><b>
-            ${sessionScope.enterRoom.room_name}
-        </b></p>
-
-</center>
-<br>
+<h1 align="center"> ${sessionScope.enterRoom.room_name}  </h1>
 
 
 
@@ -73,64 +60,48 @@
 
 <br/><br/>
 
-<c:forEach items="${messageService.getAllMessage()}" var="messages">
+
+<c:forEach items="${messages}" var="messages">
 
     <spring:message code="posted.by" var="postedbyLabel"/>
     <spring:message code="post.time" var="posttimeLabel"/>
 
-    <%--<c:if test="${ownpage == 0}">--%>
+    <c:if test="${(ownpage == 0)&&messages.roomID.getRoom_name()== sessionScope.enterRoom.room_name}">
 
-    <%--<div align="center" class="postlogin-div"><font color="white">--%>
-            <%--&lt;%&ndash;tag postImageTag shows image using Base64 encoding &ndash;%&gt;--%>
-        <%--<a id="${messages.messageID}"></a>--%>
-        <%--<c:if test="${messages.image ne null}">--%>
-            <%--<img src="<pit:postImageTag imageByte="${messages.image}"/>" height="300">--%>
-        <%--</c:if>--%>
-        <%--<p><b> ${messages.text} </b>--%>
-        <%--<p>    ${postedbyLabel} <b>--%>
-                <%--${messages.userID.login}</b>,--%>
-                <%--${posttimeLabel}:--%>
-            <%--<b>    ${messages.postDate} </b></font>--%>
-        <%--<c:if test="${messages.userID.getLogin()==userDTO.login}">--%>
-            <%--<spring:message code="edit.post" var="edityLabel"/>--%>
-            <%--<a href="/message/${messages.messageID}"> ${edityLabel} </a>--%>
-            <%--<spring:message code="delete.post" var="deleteLabel"/>--%>
-            <%--<a href="/delete/${messages.messageID}"> ${deleteLabel} </a>--%>
-        <%--</c:if>--%>
-    <%--</div>--%>
-<%--</c:if>--%>
-<%--<c:if test="${ownpage == 1}">--%>
-    <%--<c:if test="${messages.userID.getLogin()==userDTO.login}">--%>
-        <%--<div  align="center" class="messagelogin-div"><font color="white">--%>
-            <%--<a id="${messages.messageID}"></a>--%>
-            <%--<img src="<pit:postImageTag imageByte="${messages.image}"/>" height="300">--%>
-            <%--<p><b> ${messages.text} </b> </p>--%>
-            <%--<p>    ${postedbyLabel} <b> ${messages.userID.login} </b>, ${posttimeLabel}:--%>
-                <%--<b>    ${messages.postDate} </b></font>--%>
-            <%--<spring:message code="edit.post" var="edityLabel"/>--%>
-            <%--<spring:message code="delete.post" var="deleteLabel"/>--%>
-            <%--<a href="/delete/${messages.messageID}"> ${deleteLabel} </a>--%>
-        <%--</div>--%>
-    <%--</c:if>--%>
-<%--</c:if>--%>
-    <c:if test="${messages.roomID.getRoom_name()== sessionScope.enterRoom.room_name }">
-<div align="center" class="postlogin-div"><font color="white">
-        <%--tag postImageTag shows image using Base64 encoding --%>
-    <a id="${messages.messageID}"></a>
-    <c:if test="${messages.image ne null}">
-        <img src="<pit:postImageTag imageByte="${messages.image}"/>" height="300">
+
+        <div align="center" class="postlogin-div"><font color="white">
+            <a id="${messages.messageID}"></a>
+            <c:if test="${messages.image ne null}">
+                <img src="<pit:postImageTag imageByte="${messages.image}"/>" height="300">
+            </c:if>
+            <p><b> ${messages.text} </b>
+            <p>    ${postedbyLabel} <b>
+                    ${messages.userID.login}</b>,
+                    ${posttimeLabel}:
+                <b> ${messages.postDate} </b></font>
+            <c:if test="${messages.userID.getLogin()==userDTO.login}">
+                <spring:message code="edit.post" var="edityLabel"/>
+                <a href="/message/${messages.messageID}"> ${edityLabel} </a>
+                <spring:message code="delete.post" var="deleteLabel"/>
+                <a href="/delete/${messages.messageID}"> ${deleteLabel} </a>
+            </c:if>
+
+        </div>
+
     </c:if>
-    <p><b> ${messages.text} </b>
-    <p>    ${postedbyLabel} <b>
-            ${messages.userID.login}</b>,
-            ${posttimeLabel}:
-        <b>    ${messages.postDate} </b></font>
-    <c:if test="${messages.userID.getLogin()==userDTO.login}">
-        <spring:message code="edit.post" var="edityLabel"/>
-    <a href="/message/${messages.messageID}"> ${edityLabel} </a>
-        <spring:message code="delete.post" var="deleteLabel"/>
-    <a href="/delete/${messages.messageID}"> ${deleteLabel} </a>
-    </c:if>
+    <c:if test="${(ownpage == 1)&&(messages.userID.getLogin()==userDTO.login)&&(messages.roomID.getRoom_name()== sessionScope.enterRoom.room_name)}">
+        <div align="center" class="messagelogin-div"><font color="white">
+            <a id="${messages.messageID}"></a>
+            <img src="<pit:postImageTag imageByte="${messages.image}"/>" height="300">
+            <p><b> ${messages.text} </b></p>
+            <p>    ${postedbyLabel} <b> ${messages.userID.login} </b>, ${posttimeLabel}:
+                <b> ${messages.postDate} </b></font>
+            <spring:message code="edit.post" var="edityLabel"/>
+            <a href="/message/${messages.messageID}"> ${edityLabel} </a>
+            <spring:message code="delete.post" var="deleteLabel"/>
+            <a href="/delete/${messages.messageID}"> ${deleteLabel} </a>
+        </div>
+
     </c:if>
 
 

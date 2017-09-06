@@ -81,24 +81,5 @@ public class MessagesEntity implements Serializable {
         this.image = image;
     }
 
-//    public RoomEntity getRoomID() {
-//        return roomID;
-//    }
-//
-//    public void setRoomID(RoomEntity roomID) {
-//        this.roomID = roomID;
-//    }
 
-
-//    @Override
-//    public String toString() {
-//        return "MessagesEntity{" +
-//                "messageID=" + messageID +
-//                ", text='" + text + '\'' +
-//                ", postDate=" + postDate +
-//                ", userID=" + userID +
-//                ", image=" + Arrays.toString(image) +
-//                ", roomID=" + roomID +
-//                '}';
-//    }
 }

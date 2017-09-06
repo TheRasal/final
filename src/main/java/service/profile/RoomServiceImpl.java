@@ -1,7 +1,7 @@
 package service.profile;
 
 
-import dao.room.IRoomDAO;
+import dao.room.RoomDAO;
 import entity.RoomEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.List;
  */
 
 @Service("roomService")
-public class RoomServiceImpl implements IRoomService {
+public class RoomServiceImpl implements RoomService {
 
     @Autowired
-    private IRoomDAO iroomDAO;
+    private RoomDAO iroomDAO;
 
 
     @Transactional

@@ -20,24 +20,20 @@ public class RoomEntity implements Serializable {
     @Column(name = "room_name")
     private String room_name;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roomID")
+    private List<MessagesEntity> sentMessages;
 
+    public void setRoom_id(Long room_id) {
+        this.room_id = room_id;
+    }
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roomID")
-//
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roomsID")
-//    private List<RoomEntity> sentRoom;
-//
-//    public List<RoomEntity> getSentRoom() {
-//        return sentRoom;
-//    }
-//
-//    public void setSentRoom(List<RoomEntity> sentRoom) {
-//        this.sentRoom = sentRoom;
-//    }
+    public List<MessagesEntity> getSentMessages() {
+        return sentMessages;
+    }
 
-//    @Column(name = "room_name")
-//    private String room_name;
-
+    public void setSentMessages(List<MessagesEntity> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
 
     public long getRoom_id() {
         return room_id;

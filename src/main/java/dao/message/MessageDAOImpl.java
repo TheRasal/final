@@ -17,7 +17,7 @@ import java.util.Locale;
 
 @Repository("messageDAOImpl")
 @Transactional
-public class MessageDAOImpl implements IMessageDAO {
+public class MessageDAOImpl implements MessageDAO {
 
     private final Logger LOGGER = Logger.getLogger(getClass());
 

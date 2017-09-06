@@ -18,7 +18,7 @@ public class LoginValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login", "Login mustn't be empty.");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password", "password mustn't be empty.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login" );
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password");
     }
 }

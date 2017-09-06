@@ -1,4 +1,4 @@
-package Controlers;
+package controlers;
 
 import converter.PostToPostDTOConverter;
 import dto.MessagesDTO;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import service.message.IMessageService;
-import service.profile.IRoomService;
-import service.user.IUserService;
+import service.message.MessageService;
+import service.profile.RoomService;
+import service.user.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,21 +32,15 @@ public class PostController {
     private MessageSource messageSource;
 
     @Autowired
-    private IMessageService messageService;
+    private MessageService messageService;
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @Autowired
-    private IRoomService roomService;
+    private RoomService roomService;
 
-    /**
-     * Making a new post. Binding newPost parameters
-     *
-     * @param messagesDTO
-     * @param session
-     * @return
-     */
+
     @RequestMapping(value = "/makepost", method = RequestMethod.POST)
     public String displayUser(@ModelAttribute("newMessage") MessagesDTO messagesDTO, HttpSession session, @RequestParam("image") MultipartFile image) {
 
@@ -74,13 +68,7 @@ public class PostController {
 //        return "redirect:/postloginpage";
     }
 
-    /**
-     * Post edition before visiting JSP page
-     *
-     * @param model
-     * @param id    (post_id)
-     * @return
-     */
+
     @RequestMapping(value = "/message/{id}", method = RequestMethod.GET)
     public String postUpdateInit(Model model, @PathVariable(value = "id") Long id, HttpServletResponse response) {
          MessagesEntity messagesEntity = messageService.getMessageById(id);
@@ -93,13 +81,7 @@ public class PostController {
         return "/chatpage";
     }
 
-    /**
-     * Post edition after visiting JSP page
-     *
-     * @param model
-     * @param messagesDTO
-     * @return
-     */
+
     @RequestMapping(value = "/messagedit", method = RequestMethod.POST)
     public String postUpdate(Model model, @ModelAttribute("message") MessagesDTO messagesDTO) {
 
@@ -116,7 +98,8 @@ public class PostController {
     @RequestMapping(value = "/chatpage", method = RequestMethod.GET)
     public String displayUser(Model model) {
         model.addAttribute("newMessage", new MessagesDTO());
-//        model.addAttribute("messageService",messageService.getAllMessage());
+        model.addAttribute("messages",messageService.getAllMessage());
+
         return "/chatpage";
     }
 
